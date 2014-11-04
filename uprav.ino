@@ -13,6 +13,7 @@ Mark Bramwell, July 2010
 // select the pins used on the LCD panel
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 Ultrasonic ultrasonic(50, 52);
+char data[][10] = {"Beer", "Bread", "Cola", "Soda"};
 // define some values used by the panel and buttons
 const byte buzzPin = 32;
 int lcd_key     = 0;
