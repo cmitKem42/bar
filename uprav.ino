@@ -13,7 +13,6 @@ Mark Bramwell, July 2010
 // select the pins used on the LCD panel
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 Ultrasonic ultrasonic(50, 52);
-char data[][10] = {"Beer", "Bread", "Cola", "Soda"};
 // define some values used by the panel and buttons
 const byte buzzPin = 32;
 int lcd_key     = 0;
@@ -25,7 +24,7 @@ int adc_key_in  = 0;
 #define btnSELECT 4
 #define btnNONE   5
 int i=0;
-char data[] = {"Beer", "Bread", "Cola", "Soda"};
+char data[][10] = {"Beer", "Bread", "Cola", "Soda"};
 // read the buttons
 int read_LCD_buttons()
 {
@@ -71,7 +70,7 @@ void setup()
 {
  lcd.begin(16, 2);              // start the library
  lcd.setCursor(0,0);
- lcd.print("dist"); // print a simple message
+ //lcd.print("dist"); // print a simple message
  pinMode(buzzPin,OUTPUT);
  
 }
@@ -90,7 +89,7 @@ void loop()
  lcd.setCursor(9,1);            // move cursor to second line "1" and 9 spaces over
  lcd.print(dist_cm);      // display seconds elapsed since power-up
 
-
+lcd.clear();
  lcd.setCursor(0,1);            // move to the begining of the second line
  lcd_key = read_LCD_buttons();  // read the buttons
 
@@ -108,25 +107,32 @@ void loop()
      }
    case btnUP:
      {
-     i++;
      lcd.print(data[i]);
-     delay(100);
+     i++;
+     
+     
+     delay(1500);
+     
      break;
      }
    case btnDOWN:
      {
+       lcd.print(data[i]);
      i--;
-     lcd.print(data[i]);
-     delay(100);
+     
+     delay(1500);
+     
+
      break;
      }
    case btnSELECT:
      {
-     if(i==10){lcd.print("ok"); dis();}else lcd.print("no");
+     //if(i==10){lcd.print("ok"); dis();}else lcd.print("no");
      break;
      }
      case btnNONE:
      {
+           // 
      //lcd.print("NONE  ");
      break;
      }
